@@ -178,25 +178,20 @@
 
                             <div id="gallery-container" className="flex-1 overflow-y-auto px-1 pb-40 scroll-smooth">
                                 <div className="flex flex-col gap-1">
-                                    {galleryData[activeCategory] && galleryData[activeCategory].length > 0 ? (
-                                        galleryData[activeCategory].map((url, i) => (
-                <div key={i} className="relative w-full h-auto py-4 px-8 flex justify-center items-center bg-[#fcfcfc]">
-                    <img 
-                        src={url} 
-                        alt="" 
-                        className="w-full h-auto max-h-[90vh] object-contain block transition-transform duration-[2000ms] hover:scale-[1.01]"
-                        loading="lazy" 
-                        onError={(e) => { e.target.parentElement.style.display = 'none'; }}
-                    />
-                </div>
-            ))
-) : (
-    <div className="h-64 flex items-center justify-center text-zinc-200 italic">No images in this folder.</div>
-)}
-                                    ) : (
-                                        <div className="h-64 flex items-center justify-center text-zinc-200 italic">No images in this folder.</div>
-                                    )}
-                                </div>
+    {galleryData[activeCategory] && galleryData[activeCategory].map((url, i) => (
+        <div key={i} className="relative w-full h-auto py-4 px-8 flex justify-center items-center bg-[#fcfcfc]">
+            <img 
+                src={url} 
+                alt="" 
+                className="w-full h-auto max-h-[90vh] object-contain block transition-transform duration-[2000ms] hover:scale-[1.01]"
+                loading="lazy" 
+                onError={(e) => { 
+                    e.target.parentElement.style.display = 'none'; 
+                }}
+            />
+        </div>
+    ))}
+</div>
                                 <button onClick={() => document.getElementById('gallery-container').scrollTo({top:0, behavior:'smooth'})} className="mt-24 w-full flex flex-col items-center gap-4 group">
                                     <div className="w-[1px] h-12 bg-zinc-100 group-hover:h-20 transition-all duration-700"></div>
                                     <span className="text-[10px] tracking-tight uppercase text-zinc-300 italic font-normal no-clip">Return to Top</span>
